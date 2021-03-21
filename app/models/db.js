@@ -24,12 +24,6 @@ con.connect(err => {
         console.log('Table created')
       })
   console.log("Successfully connected to the database.");
-
-  con.end(err => {
-    if (err) throw err;
-    console.log("Closed database connection")
-    process.exit();
-  })
 });
 
 module.exports = con;
