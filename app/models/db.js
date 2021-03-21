@@ -12,7 +12,7 @@ con.connect(err => {
   if (err) {
       throw err;
     };
-  con.query(`CREATE TABLE IF NOT EXISTS Questions (
+  con.query(`CREATE TABLE IF NOT EXISTS Question (
       id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
       content VARCHAR(100) NOT NULL,
       answer_1 VARCHAR(100) NOT NULL,
