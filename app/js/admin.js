@@ -18,7 +18,7 @@ class Question {
 
 // XHTTP stuff
 const xhttp = new XMLHttpRequest();
-const endPointRoot = "http://localhost:3000/API/v1/"
+const endPointRoot = "https://assignment1-jackyzheng.herokuapp.com/API/v1/"
 
 
 // Get form data, turn into Question object

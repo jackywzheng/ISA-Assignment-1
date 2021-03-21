@@ -12,7 +12,7 @@ let all;
 
 // XHTTP stuff
 const xhttp = new XMLHttpRequest();
-const endPointRoot = "http://localhost:3000/API/v1/"
+const endPointRoot = "https://assignment1-jackyzheng.herokuapp.com/API/v1/"
 
 async function get() {
   xhttp.open("GET", endPointRoot + "questions", true)
