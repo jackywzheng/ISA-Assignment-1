@@ -1,3 +1,4 @@
+// Database info
 module.exports = {
     HOST: "us-cdbr-east-03.cleardb.com",
     USER: "b254ed67bf1b53",

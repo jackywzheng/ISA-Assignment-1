@@ -1,5 +1,6 @@
 const sql = require("./db.js");
 
+// Define schema
 const Question = function(question) {
     this.content = question.content;
     this.answer_1 = question.answer_1;
@@ -9,6 +10,7 @@ const Question = function(question) {
     this.correct = question.correct;
 };
 
+// Create method
 Question.create = (question, result) => {
     sql.query("INSERT INTO question SET ?", question, (err, res) => {
       if (err) {
@@ -21,6 +23,7 @@ Question.create = (question, result) => {
     });
   };
 
+  // Get all method
   Question.getAll = result => {
     sql.query("SELECT * FROM question", (err, res) => {
       if (err) {
@@ -33,6 +36,7 @@ Question.create = (question, result) => {
     });
   };
 
+  // Update method
   Question.updateByContent = (question, result) => {
     sql.query(
       "UPDATE question SET content = ?, answer_1 = ?, answer_2 = ?, answer_3 = ?, answer_4 = ?, correct =? WHERE content = ?",

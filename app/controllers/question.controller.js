@@ -19,7 +19,7 @@ exports.create = (req, res) => {
     correct: req.body.correct
   });
 
-  // Save Question in the database
+  // Save Question to the database
   Question.create(question, (err, data) => {
     if (err)
       res.status(500).send({
@@ -30,20 +30,20 @@ exports.create = (req, res) => {
   });
 };
 
-// Retrieve all Questions from the database.
-exports.findAll = (req, res) => {
+// Retrieve all Questions from the database
+exports.get = (req, res) => {
     Question.getAll((err, data) => {
         if (err)
           res.status(500).send({
             message:
-              err.message || "Some error occurred while retrieving Questions."
+              err.message || "An error occurred while retrieving Questions."
           });
         else res.send(data);
       });
 };
 
 
-// Update a Question identified by the QuestionId in the request
+// Update a Question identified by the Question's content in the request
 exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {

@@ -3,10 +3,11 @@ const cors = require('cors')
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-app.use(express.json()); //Used to parse JSON bodies
-app.use(cors())
-app.use(express.static("app"))
+app.use(express.json()); // for JSON parsing
+app.use(cors()) // Allow CORS
+app.use(express.static("app")) // Display static files
 
+// Testing purposes
 app.get('/', (req, res) => {
     res.json({
         message: "Assignment 1."

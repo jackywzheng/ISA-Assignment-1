@@ -20,7 +20,6 @@ class Question {
 const xhttp = new XMLHttpRequest();
 const endPointRoot = "https://assignment1-jackyzheng.herokuapp.com/API/v1/"
 
-
 // Get form data, turn into Question object
 function addQuestion() {
   let question = document.getElementById("question").value;
@@ -59,7 +58,7 @@ function addQuestion() {
   document.getElementById("d_answer").value = "";
 }
 
-// Post function
+// POST function
 function post(question) {
   xhttp.open("POST", endPointRoot + "questions", true)
   xhttp.setRequestHeader("Content-type", "application/json");
@@ -71,6 +70,7 @@ function post(question) {
   }
 }
 
+// Updates a question using PUT
 function updateQuestion() {
   let question = document.getElementById("question").value;
   let a_answer = document.getElementById("a_answer").value;

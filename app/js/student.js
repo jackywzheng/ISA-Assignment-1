@@ -1,19 +1,11 @@
-
-{/* <form name="questionform">
-<input type="text" id="question" />
-<p>Answers</p>
-<input type="radio" checked="checked" name="choices" id="a"><input type="text" id="a_answer"><br>
-<input type="radio" name="choices" id="b"><input type="text" id="b_answer"><br>
-<input type="radio" name="choices" id="c"><input type="text" id="c_answer"><br>
-<input type="radio" name="choices" id="d"><input type="text" id="d_answer"><br>
-</form> */}
-
+// SQL Result of all Questions
 let all;
 
 // XHTTP stuff
 const xhttp = new XMLHttpRequest();
 const endPointRoot = "https://assignment1-jackyzheng.herokuapp.com/API/v1/"
 
+// Get request to server
 async function get() {
   xhttp.open("GET", endPointRoot + "questions", true)
   xhttp.send();
@@ -25,22 +17,20 @@ async function get() {
   }
 }
 
+// Loads the quiz after results are retrieved
 function loadQuiz(all_questions) {
     all_questions = JSON.parse(all_questions)
     console.log(all_questions)
     for (let i = 0; i < all_questions.length; i++) {
-        // Get and parse JSON
-
+        // Parse JSON
         let quizQuestion = all_questions[i];
-        console.log(quizQuestion)
 
-        // Get and create question element
+        // Create question element
         let question = document.createElement("p");
         question.innerHTML = quizQuestion.content;
         document.getElementById("quiz").appendChild(question);
 
-        // Get and create answer elements
-        // Should prob use another loop here, but we'll have to change our JSON schema to make it easy to loop (i.e. array or answers {1: answer1, 2: answer2, etc...})
+        // Create answer elements
         let break1 = document.createElement("br");
         let break2 = document.createElement("br");
         let break3 = document.createElement("br");
@@ -104,12 +94,12 @@ function loadQuiz(all_questions) {
     }
 }
 
-get();
-
+// Checks answers, highlights correct answer, and scores
 function submit() {
     let answers;
     let correctAnswer;
     let score = 0;
+    // Check each answer of each question to find correct one
     for (let i = 0; i < all.length; i++) {
         answers = document.getElementsByName(i.toString());
         correctAnswer = all[i].correct;
@@ -118,8 +108,12 @@ function submit() {
                 score++;
             }
         }
+        // Highlights correct answer
         document.getElementById(correctAnswer + i.toString()).style.backgroundColor = "green";
-        console.log(correctAnswer + i.toString());
     }
+    // Displays score
     document.getElementById("score").innerHTML = "Your results: " + score + " / " + all.length;
 }
+
+// Execute 
+get();
